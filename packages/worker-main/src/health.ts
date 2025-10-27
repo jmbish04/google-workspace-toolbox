@@ -45,7 +45,7 @@ health.post('/run', async (c) => {
     return c.json({ message: 'Health check started', reportId });
 
   } catch (error: any) {
-    console.error('Health check failed:', error.message);
+    console.error('Health check failed:', error);
     // Attempt to update the report status to ERROR
     await db.prepare('UPDATE health_reports SET status = ? WHERE id = ?')
       .bind('ERROR', reportId)
