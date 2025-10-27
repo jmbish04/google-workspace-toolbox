@@ -9,7 +9,7 @@ export const get_logs_from_report = async ({ reportId, db }: { reportId: string,
     return JSON.stringify({ runs: [], logs: [] });
   }
 
-  const runIds = runs.map((r: any) => r.id);
+  const runIds = (runs as {id: string}[]).map((r) => r.id);
   const placeholders = runIds.map(() => '?').join(',');
 
   const logsResult = await db.prepare(`SELECT * FROM health_logs WHERE run_id IN (${placeholders})`)
