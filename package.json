@@ -25,7 +25,7 @@
   },
   "scripts": {
     "build": "tsc -b packages/*",
-    "test": "jest --passWithNoTests",
+    "test": "jest",
     "lint": "eslint packages/**/*.ts",
     "dev": "wrangler dev -c packages/worker-main/wrangler.toml",
     "deploy": "wrangler deploy -c packages/worker-main/wrangler.toml",
