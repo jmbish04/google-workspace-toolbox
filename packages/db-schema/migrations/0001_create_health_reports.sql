@@ -25,5 +25,5 @@ report_id TEXT,
 human_summary TEXT,
 dev_agent_prompt TEXT,
 overall_fix_prompt TEXT,
-FOREIGN KEY(report_id) REFERENCES health_reports(id)
+FOREIGN KEY(report_id) REFERENCES health_reports(id) ON DELETE CASCADE
 );
