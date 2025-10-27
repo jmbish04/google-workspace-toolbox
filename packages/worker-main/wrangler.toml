@@ -1,0 +1,14 @@
+name = "worker-main"
+main = "src/index.ts"
+compatibility_date = "2023-10-30"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "workspace_health"
+
+[[services]]
+binding = "HEALTH_AGENT"
+service = "worker-health-agent"
+
+[triggers]
+crons = ["0 4 * * *"]
