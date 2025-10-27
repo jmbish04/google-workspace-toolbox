@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
 import { agent } from './agent';
 
-const app = new Hono<{ Bindings: { DB: D1Database, AI: any } }>();
+const app = new Hono<{ Bindings: { DB: D1Database, AI: Ai } }>();
 
 app.post('/', async (c) => {
   const db = c.env.DB;
