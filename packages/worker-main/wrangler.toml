@@ -5,6 +5,8 @@ compatibility_date = "2023-10-30"
 [[d1_databases]]
 binding = "DB"
 database_name = "workspace_health"
+database_id = "93a596dc-93c2-49ef-8e75-b8f4ccb1e246"
+migrations_dir = "../../packages/db-schema/migrations"
 
 [[services]]
 binding = "HEALTH_AGENT"
@@ -12,3 +14,7 @@ service = "worker-health-agent"
 
 [triggers]
 crons = ["0 4 * * *"]
+
+[assets]
+directory = "../../packages/ui-dashboard"
+binding = "ASSETS"

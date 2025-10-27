@@ -4,6 +4,31 @@ import { DriveClient } from '@workspace-api-modules/drive/src/client/DriveClient
 
 export const health = new Hono<{ Bindings: { DB: D1Database, HEALTH_AGENT: Fetcher } }>();
 
+health.get('/', async (c) => {
+  let dbOk = false;
+  try {
+    // Check DB
+    await c.env.DB.prepare('SELECT 1').run();
+    dbOk = true;
+  } catch (e) {
+    dbOk = false;
+  }
+
+  let agentOk = false;
+  try {
+    // Check Health Agent
+    const res = await c.env.HEALTH_AGENT.fetch(new Request('https://worker-health-agent/health'));
+    agentOk = res.ok;
+  } catch (e) {
+    agentOk = false;
+  }
+
+  return c.json({
+    dbOk,
+    agentOk,
+  });
+});
+
 health.post('/run', async (c) => {
   const db = c.env.DB;
   const client = new DriveClient(c.env);
