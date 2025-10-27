@@ -36,7 +36,7 @@ health.post('/run', async (c) => {
       .run();
 
     // 5. Trigger the health agent
-    await c.env.HEALTH_AGENT.fetch(new Request('https://agent.workers.dev', {
+    await c.env.HEALTH_AGENT.fetch(new Request('https://worker-health-agent', {
       method: 'POST',
       body: JSON.stringify({ reportId }),
       headers: { 'Content-Type': 'application/json' }
