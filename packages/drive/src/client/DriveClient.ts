@@ -1,5 +1,5 @@
 export class DriveClient {
-  constructor(private env: any) {}
+  constructor(private env: { [key: string]: unknown }) {}
 
   get files() {
     return {
