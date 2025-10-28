@@ -8,7 +8,7 @@ health.get('/', async (c) => {
   let dbOk = false;
   try {
     // Check DB
-    await c.env.DB.prepare('SELECT 1').run();
+    await c.env.DB.prepare('SELECT version()').run();
     dbOk = true;
   } catch (e) {
     dbOk = false;
