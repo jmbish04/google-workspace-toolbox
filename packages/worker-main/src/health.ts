@@ -17,7 +17,7 @@ health.get('/', async (c) => {
   let agentOk = false;
   try {
     // Check Health Agent
-    const res = await c.env.HEALTH_AGENT.fetch(new Request('https://worker-health-agent/health'));
+    const res = await c.env.HEALTH_AGENT.fetch(new Request(c.env.HEALTH_AGENT_URL + '/health'));
     agentOk = res.ok;
   } catch (e) {
     agentOk = false;
