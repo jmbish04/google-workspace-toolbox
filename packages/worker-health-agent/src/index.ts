@@ -3,6 +3,10 @@ import { agent } from './agent';
 
 const app = new Hono<{ Bindings: { DB: D1Database, AI: Ai } }>();
 
+app.get('/health', (c) => {
+  return c.json({ status: 'ok' });
+});
+
 app.post('/', async (c) => {
   const db = c.env.DB;
   const { reportId } = await c.req.json();

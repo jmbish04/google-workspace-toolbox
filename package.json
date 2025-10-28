@@ -28,8 +28,8 @@
     "test": "jest",
     "lint": "eslint packages/**/*.ts",
     "dev": "wrangler dev -c packages/worker-main/wrangler.toml",
-    "deploy": "wrangler deploy -c packages/worker-main/wrangler.toml",
+    "deploy": "npm run db:migrate && wrangler deploy -c packages/worker-main/wrangler.toml",
     "deploy-agent": "wrangler deploy -c packages/worker-health-agent/wrangler.toml",
-    "db:migrate": "wrangler d1 migrations apply DB packages/db-schema/migrations"
+    "db:migrate": "npx wrangler d1 migrations apply DB --remote"
   }
 }
